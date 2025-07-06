@@ -1,0 +1,10 @@
+{
+    "yaml.schemas": {
+        "schemas": [
+            {
+                "fileMatch": ["discogs.yml"],
+                "url": "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/refs/heads/main/schemas/v3.1/schema.yaml"
+            }
+        ]
+    }
+}

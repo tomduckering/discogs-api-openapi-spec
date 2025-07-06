@@ -1,0 +1,195 @@
+openapi: 3.0.0
+info:
+  title: "Unofficial Discogs API"
+  description: "This is an **unofficial** API spec for the Discogs API."
+  version: "1.0.0"
+servers:
+  - url: https://api.discogs.com
+    description: Discogs API
+paths:
+  /database/search:
+    get:
+      summary: "Search the Discogs database"
+      description: "Search for releases, artists, labels, and more in the Discogs database."
+      parameters:
+        - name: query
+          in: query
+          required: false
+          schema:
+            type: string
+          description: "Search query"
+        - name: type
+          in: query
+          schema:
+            type: string
+            enum: [release, master, artist, label]
+          description: "Type of search"
+          required: false
+        - name: title
+          in: query
+          schema:
+            type: string
+          description: "Title of the release"
+          required: false
+        - name: release_title
+          in: query
+          schema:
+            type: string
+          description: "Title of the release"
+          required: false
+        - name: credit
+          in: query
+          schema:
+            type: string
+          description: "Credit for the release"
+          required: false
+        - name: artist
+          in: query
+          schema:
+            type: string
+          description: "Artist name"
+          required: false
+        - name: anv
+          in: query
+          schema:
+            type: string
+          description: "Search artist ANV"
+          required: false
+        - name: label
+          in: query
+          schema:
+            type: string
+          description: "Label name"
+          required: false
+        - name: genre
+          in: query
+          schema:
+            type: string
+          description: "Genre of the release"
+          required: false
+        - name: style
+          in: query
+          schema:
+            type: string
+          description: "Style of the release"
+          required: false
+        - name: country
+          in: query
+          schema:
+            type: string
+          description: "Country of the release"
+          required: false
+        - name: year
+          in: query
+          schema:
+            type: string
+          description: "Year of the release"
+          required: false
+        - name: format
+          in: query
+          schema:
+            type: string
+          description: "Format of the release"
+          required: false
+        - name: catno
+          in: query
+          schema:
+            type: string
+          description: "Catalog number of the release"
+          required: false
+        - name: barcode
+          in: query
+          schema:
+            type: string
+          description: "Barcode of the release"
+          required: false
+        - name: track
+          in: query
+          schema:
+            type: string
+          description: "Track name"
+          required: false
+        - name: submitter
+          in: query
+          schema:
+            type: string
+          description: "Submitter of the release"
+          required: false
+        - name: contributor
+          in: query
+          schema:
+            type: string
+          description: "Contributor to the release"
+          required: false
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  pagination:
+                    type: object
+                    properties:
+                      page:
+                        type: integer
+                      pages:
+                        type: integer
+                      per_page:
+                        type: integer
+                      items:
+                        type: integer
+                      urls:
+                        type: object
+                        properties:
+                          next:
+                            type: string
+                          last:
+                            type: string
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        style:
+                          type: array
+                          items:
+                            type: string
+                        thumb:
+                          type: string
+                        title:
+                          type: string
+                        country:
+                          type: string
+                        format:
+                          type: array
+                          items:
+                            type: string
+                        uri:
+                          type: string
+                        community:
+                          type: object
+                          properties:
+                            have:
+                              type: integer
+                            want:
+                              type: integer
+                        label:
+                          type: array
+                          items:
+                            type: string
+                        catno:
+                          type: string
+                        year:
+                          type: string
+                        genre:
+                          type: array
+                          items:
+                            type: string
+                        resource_url:
+                          type: string
+                        type:
+                          type: string
+                        id: 
+                          type: integer
